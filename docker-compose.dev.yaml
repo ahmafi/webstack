@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      target: deps
+    restart: no
+    command: npm run dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./web:/app
+
+  cms:
+    build:
+      target: deps
+    restart: no
+    command: npm run develop
+    volumes:
+      - ./cms:/app
+
+  mysql:
+    restart: no
