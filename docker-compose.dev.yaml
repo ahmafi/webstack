@@ -4,6 +4,8 @@ services:
   web:
     build:
       target: deps
+      args:
+        NODE_ENV: development
     restart: no
     command: npm run dev
     ports:
@@ -14,6 +16,8 @@ services:
   cms:
     build:
       target: deps
+      args:
+        NODE_ENV: development
     restart: no
     command: npm run develop
     volumes:

@@ -14,7 +14,8 @@ RUN npm run build
 
 FROM node:16.15.0-buster AS runner
 WORKDIR /app
-ENV NODE_ENV production
+ARG NODE_ENV
+ENV NODE_ENV $NODE_ENV
 ENV NEXT_TELEMETRY_DISABLED 1
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
