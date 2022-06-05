@@ -30,6 +30,8 @@ services:
     # FIXME: switch to caching_sha2_password when it's supported by strapi
     # https://feedback.strapi.io/developer-experience/p/add-support-for-mysql2-mysql-v8-auth-system
     command: '--default-authentication-plugin=mysql_native_password'
+    cap_add:
+      - SYS_NICE
     volumes:
       - mysql-data:/var/lib/mysql
     ports:
