@@ -6,10 +6,7 @@ services:
       target: deps
       args:
         NODE_ENV: development
-    restart: no
     command: npm run dev
-    ports:
-      - 3000:3000
     volumes:
       - ./web:/app
 
@@ -18,10 +15,6 @@ services:
       target: deps
       args:
         NODE_ENV: development
-    restart: no
     command: npm run develop
     volumes:
       - ./cms:/app
-
-  mysql:
-    restart: no

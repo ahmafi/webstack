@@ -1,43 +1,19 @@
 version: '3.8'
 
 services:
-  nginx:
-    image: nginx:1.21.6
-    ports:
-      - 80:80
-      - 443:443
-    restart: always
-    volumes:
-      - ./nginx/conf/:/etc/nginx/conf.d/:ro
-      - ./certbot/www:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
-    network_mode: host
-
-  certbot:
-    image: certbot/certbot:v1.27.0
-    volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
-
   web:
     build:
       context: ./web
-      args:
-        NODE_ENV: production
     ports:
       - 3000:3000
-    restart: always
     depends_on:
       - cms
 
   cms:
     build:
       context: ./cms
-      args:
-        NODE_ENV: production
     ports:
       - 1337:1337
-    restart: always
     environment:
       DATABASE_HOST: mysql
       DATABASE_PORT: 3306
@@ -58,7 +34,6 @@ services:
       - mysql-data:/var/lib/mysql
     ports:
       - 3306:3306
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
       MYSQL_USER: $STRAPI_MYSQL_USER

@@ -27,6 +27,8 @@ With the help of docker compose we can start all containers in a single server.
 2. Build the containers using docker compose:
 ```shell
 docker compose \
+  -f docker-compose.yaml \
+  -f docker-compose.prod.yaml \
   -p webstack-prod \
   --env-file ./.env.prod \
   build
@@ -34,6 +36,8 @@ docker compose \
 3. Start the containers using docker compose:
 ```shell
 docker compose \
+  -f docker-compose.yaml \
+  -f docker-compose.prod.yaml \
   -p webstack-prod \
   --env-file ./.env.prod \
   up -d
