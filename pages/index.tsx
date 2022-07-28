@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Favicon from '../components/Favicon';
 import Post from '../interfaces/post';
 import { getAllPosts } from '../lib/api/posts';
 
@@ -17,7 +16,6 @@ const Home: NextPage<Props> = ({ allPosts }: Props) => {
           name="description"
           content="وب استک. اخبار و آموزش تکنولوژی های دنیای وب"
         />
-        <Favicon />
       </Head>
 
       <main>
